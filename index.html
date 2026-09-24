@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discord</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#5865F2" />
+</head>
+<body>
+  <script>
+    function launchDiscord() {
+      try {
+        // Try to open the installed Discord Android app.
+        window.location.href =
+          "intent://discord.com/app#Intent;" +
+          "scheme=https;" +
+          "package=com.discord;" +
+          "end";
+      } catch (e) {
+        alert("Discord could not be opened. Make sure the Discord app is installed.");
+      }
+
+      // If the app didn't launch, show an error after a moment.
+      setTimeout(() => {
+        if (document.visibilityState === "visible") {
+          alert("Discord could not be opened. Make sure the Discord app is installed.");
+        }
+      }, 1800);
+    }
+
+    launchDiscord();
+  </script>
+</body>
+</html>
